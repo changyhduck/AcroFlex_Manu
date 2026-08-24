@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Editor settings and temporary files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build artifacts and dependency directories
+node_modules/
+dist/
+build/
+.vitepress/dist/
+.docusaurus/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
