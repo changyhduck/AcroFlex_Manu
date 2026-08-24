@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AcroFlex 超融合系統使用手冊" />
+    <title>AcroFlex 超融合系統使用手冊</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="手冊章節導覽">
+        <a class="brand" href="#1.1" aria-label="AcroFlex 使用手冊首頁">
+          <span class="brand-mark">A</span>
+          <span><strong>AcroFlex</strong><small>使用手冊</small></span>
+        </a>
+
+        <label class="search-box" for="chapter-search">
+          <span aria-hidden="true">⌕</span>
+          <input id="chapter-search" type="search" placeholder="搜尋章節或關鍵字" autocomplete="off" />
+        </label>
+        <p id="search-status" class="search-status" aria-live="polite"></p>
+
+        <nav id="chapter-nav" class="chapter-nav" aria-label="章節列表"></nav>
+        <p class="sidebar-footer">AcroRed · AcroFlex Manual</p>
+      </aside>
+
+      <main id="manual-content" class="content" tabindex="-1">
+        <div class="content-placeholder">載入手冊內容中…</div>
+      </main>
+    </div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
