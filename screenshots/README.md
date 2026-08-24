@@ -8,16 +8,19 @@
 
 ```text
 screenshots/
-├── 01-overview/
-├── 02-initial-setup/
-├── 03-cluster-management/
-├── 04-storage/
-├── 05-network/
-├── 06-virtual-machines/
-├── 07-monitoring/
-├── 08-maintenance/
+├── 01-acrocube-overview/
+├── 02-acrocube-initialization/
+├── 03-acroflex-management/
+├── 04-account-management/
+├── 05-vm-vdi-management/
+├── 06-vm-vdi-backup/
+├── 07-power-outage-protection/
+├── 08-other-settings/
+├── 09-appendix/
 └── 99-unclassified/
 ```
+
+各目錄依序對應手冊的第一層章節；子章節的截圖可在對應目錄下繼續建立子目錄。
 
 - 章節尚未定案或暫時無法分類的截圖，先放入 `99-unclassified/`。
 - 當手冊章節確定後，再將畫面移至對應章節目錄，並同步更新文件中的圖片連結。
