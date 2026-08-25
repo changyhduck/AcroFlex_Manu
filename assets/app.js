@@ -37,6 +37,11 @@ function renderContent(chapter) {
     const specificationsTable = specificationsHeading.nextElementSibling;
     content.insertBefore(specificationsHeading, appearanceHeading);
     content.insertBefore(specificationsTable, appearanceHeading);
+    if (chapter.id === "1.1") {
+      const powerPlanning = document.createElement("section");
+      powerPlanning.innerHTML = `<h2>供電規劃</h2><p>AHC-F3000 配置 1,100W 以上、1+1 熱備援電源供應器。兩組電源供應器在正常情況下可共同分攤負載；但任一電源、PDU、UPS 或供電迴路異常時，另一組必須能獨立供應整台主機的完整負載。</p><table class="feature-table"><thead><tr><th scope="col">規劃項目</th><th scope="col">建議</th></tr></thead><tbody><tr><td>每迴路容量</td><td>每一條供電迴路應可獨立提供至少 1,100W；建議預留至少 20% 餘裕，以每台主機每迴路 1.32kW 進行容量規劃。</td></tr><tr><td>110V 供電參考</td><td>以 1,100W 計算的理論電流約為 10A；保留 20% 餘裕後約為 12A。若該迴路沒有其他負載，建議每迴路至少使用 15A 以上專用迴路。</td></tr><tr><td>220V 供電參考</td><td>以 1,100W 計算的理論電流約為 5A；保留 20% 餘裕後約為 6A。若該迴路沒有其他負載，建議每迴路至少使用 10A 以上專用迴路。</td></tr><tr><td>雙迴路接法</td><td>電源供應器 A 應接至迴路／UPS／PDU A；電源供應器 B 應接至獨立的迴路／UPS／PDU B。兩者不得共用同一斷路器、同一 UPS 或同一 PDU 的單一上游電源。</td></tr><tr><td>多主機估算</td><td>若有 N 台 AHC-F3000，每個迴路建議容量至少為 N × 1.32kW；並將網路設備、儲存設備及其他同迴路負載一併納入 UPS 與迴路容量計算。</td></tr></tbody></table><div class="callout"><strong>安裝前確認：</strong>1,100W 為電源供應器額定功率，實際輸入電流還會受電源效率、功率因數、磁碟與擴充卡組態影響。最終迴路、插座、UPS 與 PDU 規格應以電源供應器銘牌的輸入額定值、實際組態及合格電氣人員的評估為準。</div>`;
+      content.insertBefore(powerPlanning, appearanceHeading);
+    }
   }
   document.querySelectorAll(".chapter-button").forEach((button) => button.classList.toggle("is-active", button.dataset.id === chapter.id));
   history.replaceState(null, "", `#${chapter.id}`);
