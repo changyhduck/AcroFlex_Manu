@@ -30,6 +30,13 @@ const searchStatus = document.querySelector("#search-status");
 function renderContent(chapter) {
   document.title = `${chapter.number} ${chapter.title}｜AcroFlex 使用手冊`;
   content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1>${chapter.number} ${chapter.title}</h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? '<span class="tag">第 1 章子章節</span>' : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
+  const sectionHeadings = [...content.querySelectorAll("h2")];
+  const specificationsHeading = sectionHeadings.find((heading) => heading.textContent === "主機規格");
+  const appearanceHeading = sectionHeadings.find((heading) => heading.textContent === "主機外觀");
+  if (specificationsHeading && appearanceHeading) {
+    content.insertBefore(specificationsHeading.nextElementSibling, appearanceHeading);
+    content.insertBefore(specificationsHeading, appearanceHeading);
+  }
   document.querySelectorAll(".chapter-button").forEach((button) => button.classList.toggle("is-active", button.dataset.id === chapter.id));
   history.replaceState(null, "", `#${chapter.id}`);
 }
