@@ -34,8 +34,9 @@ function renderContent(chapter) {
   const specificationsHeading = sectionHeadings.find((heading) => heading.textContent === "主機規格");
   const appearanceHeading = sectionHeadings.find((heading) => heading.textContent === "主機外觀");
   if (specificationsHeading && appearanceHeading) {
+    const specificationsTable = specificationsHeading.nextElementSibling;
     content.insertBefore(specificationsHeading, appearanceHeading);
-    content.insertBefore(specificationsHeading.nextElementSibling, appearanceHeading);
+    content.insertBefore(specificationsTable, appearanceHeading);
   }
   document.querySelectorAll(".chapter-button").forEach((button) => button.classList.toggle("is-active", button.dataset.id === chapter.id));
   history.replaceState(null, "", `#${chapter.id}`);
