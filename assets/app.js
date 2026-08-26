@@ -13,6 +13,12 @@ const chapters = [
   },
   { id: "1.2", number: "1.2.", title: "AHC-F2000 超融合主機", level: 2, keywords: "AHC F2000 主機 硬體", lead: "本節將說明 AHC-F2000 主機的硬體規格與外觀辨識方式。", body: `<div class="empty-state">內容準備中。請提供 AHC-F2000 的產品畫面、規格或操作描述，以建立本節內容。</div>` },
   { id: "2", number: "2.", title: "AcroCube 超融合主機初始化", level: 1, keywords: "初始化 設定 部署 AcroCube", lead: "本章將說明 AcroCube 主機的初始部署與必要設定。", body: `<div class="empty-state">內容準備中。提供初始化流程截圖與操作步驟後，即可在此建立完整說明。</div>` },
+  {
+    id: "2.1", number: "2.1.", title: "登入 AcroCube 管理頁面", level: 2,
+    keywords: "登入 AcroCube Client 管理頁面 admin 密碼 IP 位址 https ping",
+    lead: "完成硬體安裝並啟動主機後，透過管理網路登入 AcroCube Client，開始進行初始化與系統管理。",
+    body: `<h2>前置條件</h2><ul><li>已完成 AcroCube 主機的電源、網路與磁碟安裝。</li><li>主機已開機完成，且管理電腦可連線至 AcroCube 的管理網路。</li><li>具備 AcroCube 管理帳號。出廠預設管理帳號為 <code>admin</code>，預設密碼為 <code>000000</code>。</li><li>若尚未變更網路設定，AcroCube 出廠預設 IP 位址為 <code>192.168.1.88</code>。</li></ul><div class="callout"><strong>安全性提醒：</strong>預設帳密只應用於首次設定。首次成功登入後，請立即變更 <code>admin</code> 密碼，並妥善保管新密碼。</div><h2>登入步驟</h2><ol><li>按下 AcroCube 主機的電源按鈕，等待主機完成開機。</li><li>確認管理電腦與 AcroCube 管理網路連通。可在管理電腦執行下列指令確認是否收到回應：<pre class="command-block"><code>ping 192.168.1.88</code></pre>若主機已改用其他 IP 位址，請將指令中的位址改為該主機目前的管理 IP。</li><li>開啟瀏覽器，在網址列輸入下列網址後按 Enter：<pre class="command-block"><code>https://192.168.1.88</code></pre>若 IP 位址已變更，請以 <code>https://&lt;AcroCube 管理 IP&gt;</code> 取代。</li><li>若瀏覽器顯示憑證或安全性警告，請先確認網址為預期的 AcroCube 管理 IP，且目前使用受信任的管理網路；再依組織的憑證管理政策繼續連線。</li><li>在 AcroCube Client 登入畫面中輸入帳號 <code>admin</code> 與密碼。</li><li>按一下<strong>登入</strong>。</li><li>成功登入後，即可看到 AcroCube Client 管理介面，並可繼續進行網路、磁碟陣列及叢集等初始化設定。</li></ol><h2>登入畫面</h2><figure class="figure-card login-screen"><img src="manual/02-acrocube-initialization/01-login/assets/screenshots/AcroCube_Login_Chinese.png" alt="AcroCube Client 登入畫面"><figcaption>圖 2.1-1　AcroCube Client 登入畫面。畫面中的 IP 位址僅為範例，實際登入時請使用目標主機的管理 IP。</figcaption></figure><h2>注意事項</h2><ul><li>請使用 <code>https://</code> 存取管理介面，避免在不受信任的網路傳送管理帳密。</li><li>若 <code>ping</code> 無回應，請先確認主機已完成開機、網路線已連接、管理電腦與主機位於可互通的網段，以及 IP 位址是否已被變更。</li><li>除非使用個人專屬且受管理的裝置，否則不建議勾選登入畫面的「記住我」。</li><li>請勿在公開或非受管控的電腦上儲存 AcroCube 管理帳號與密碼。</li></ul>`
+  },
   { id: "3", number: "3.", title: "AcroFlex 超融合系統管理", level: 1, keywords: "AcroFlex 管理 叢集 節點 系統", lead: "本章說明 AcroFlex 超融合系統的日常管理功能。", body: `<div class="empty-state">內容準備中。</div>` },
   { id: "4", number: "4.", title: "帳號管理", level: 1, keywords: "帳號 使用者 權限 角色", lead: "本章說明使用者帳號、角色與權限的管理方式。", body: `<div class="empty-state">內容準備中。</div>` },
   { id: "5", number: "5.", title: "雲主機和雲桌面管理", level: 1, keywords: "雲主機 雲桌面 VM VDI 虛擬機", lead: "本章說明雲主機與雲桌面的建立、管理及操作。", body: `<div class="empty-state">內容準備中。</div>` },
@@ -29,7 +35,8 @@ const searchStatus = document.querySelector("#search-status");
 
 function renderContent(chapter) {
   document.title = `${chapter.number} ${chapter.title}｜AcroFlex 使用手冊`;
-  content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1>${chapter.number} ${chapter.title}</h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? '<span class="tag">第 1 章子章節</span>' : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
+  const parentChapter = chapter.number.split(".")[0];
+  content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1>${chapter.number} ${chapter.title}</h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? `<span class="tag">第 ${parentChapter} 章子章節</span>` : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
   const sectionHeadings = [...content.querySelectorAll("h2")];
   const specificationsHeading = sectionHeadings.find((heading) => heading.textContent === "主機規格");
   const appearanceHeading = sectionHeadings.find((heading) => heading.textContent === "主機外觀");

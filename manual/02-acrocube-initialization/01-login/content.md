@@ -1,7 +1,7 @@
 ---
 number: "2.1"
 title: "登入 AcroCube 管理頁面"
-status: draft
+status: published
 source: index.md
 ---
 

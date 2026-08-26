@@ -80,6 +80,11 @@ p { margin: 0 0 16px; }
 .feature-table th { color: #274c6e; font-size: .9rem; background: #eff6fc; }
 .feature-table th:first-child, .feature-table td:first-child { width: 29%; font-weight: 700; }
 .feature-table tr:last-child td { border-bottom: 0; }
+.command-block { padding: 12px 14px; margin: 12px 0; overflow-x: auto; color: #e8f3fb; background: #183650; border-radius: 8px; }
+.command-block code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.content :not(pre) > code { padding: 1px 5px; color: #175e98; font-size: .92em; background: #e8f3fb; border-radius: 4px; }
+.login-screen { max-width: 920px; margin: 18px 0 30px; }
+.login-screen img { height: auto; max-height: none; padding: 0; }
 .empty-state { padding: 25px; margin-top: 26px; color: #566b7e; background: #fff; border: 1px dashed #b9c9d8; border-radius: 10px; }
 .content-placeholder { color: var(--muted); }
 
