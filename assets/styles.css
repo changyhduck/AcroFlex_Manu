@@ -53,13 +53,15 @@ body {
 .chapter-group-header { display: flex; align-items: center; }
 .chapter-group-header .chapter-button { flex: 1; }
 .chapter-children { display: grid; gap: 2px; margin: 2px 0 3px; }
+.chapter-children[hidden] { display: none; }
 .chapter-toggle { width: 26px; min-width: 26px; height: 34px; padding: 0; color: #9fc1da; font: inherit; font-size: 1.5rem; line-height: 1; background: transparent; border: 0; border-radius: 7px; cursor: pointer; transform: rotate(0deg); transition: transform .16s ease, color .16s ease, background .16s ease; }
 .chapter-toggle[aria-expanded="true"] { transform: rotate(90deg); }
 .chapter-toggle:hover, .chapter-toggle:focus-visible { color: #fff; background: #254b6b; outline: none; }
+.chapter-toggle:disabled { visibility: hidden; cursor: default; }
 .chapter-button { width: 100%; padding: 9px 10px; color: #d2e0ed; font: inherit; font-size: .92rem; text-align: left; background: transparent; border: 0; border-radius: 7px; cursor: pointer; }
 .chapter-button:hover, .chapter-button:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .chapter-button.is-active { color: #fff; font-weight: 700; background: var(--blue); }
-.chapter-button.level-2 { padding-left: 25px; color: #b8ccde; font-size: .85rem; }
+.chapter-button.level-2 { padding-left: 44px; color: #b8ccde; font-size: .85rem; }
 .chapter-button[hidden] { display: none; }
 .sidebar-footer { margin: auto 8px 0; padding-top: 22px; color: #91abc2; font-size: .72rem; }
 
@@ -108,7 +110,7 @@ p { margin: 0 0 16px; }
   .chapter-group { min-width: 0; }
   .chapter-group-header .chapter-button { min-width: 0; }
   .chapter-button { font-size: .8rem; }
-  .chapter-button.level-2 { padding-left: 10px; }
+  .chapter-button.level-2 { padding-left: 36px; }
   .sidebar-footer { display: none; }
   .content { padding: 38px 22px 54px; }
   .feature-table th, .feature-table td { padding: 11px; }

@@ -132,7 +132,10 @@ chapters.forEach((chapter) => {
 });
 
 chapterGroups.forEach(({ content, toggle }) => {
-  if (!content.childElementCount) toggle.hidden = true;
+  if (!content.childElementCount) {
+    toggle.disabled = true;
+    toggle.setAttribute("aria-hidden", "true");
+  }
 });
 
 search.addEventListener("input", () => {
