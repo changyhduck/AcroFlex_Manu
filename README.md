@@ -86,7 +86,7 @@
 
 ## 操作畫面素材
 
-撰寫文件時，可將操作截圖放入 [`screenshots`](screenshots/) 目錄，並提供操作目的、前置條件與實際步驟。我會依據畫面與描述協助產出對應的使用手冊內容。檔名與敏感資訊處理規範請見 [screenshots/README.md](screenshots/README.md)。
+撰寫文件時，請先在 [`manual`](manual/) 對應章節的 `index.md` 補上內容綱要。產品圖片放在該章節的 `assets/images/`，操作截圖放在 `assets/screenshots/`；綱要完成後，我會依據內容與素材產出對應的使用手冊網頁。完整流程請見 [manual/README.md](manual/README.md)。
 
 ## 後續工作
 
