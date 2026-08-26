@@ -1,4 +1,5 @@
 ---
+
 number: "2.2"
 title: "管理頁面和系統資訊說明"
 status: outline
@@ -9,6 +10,10 @@ status: outline
 ## 本節目的
 
 <!-- 說明 AcroCube 管理頁面各區域與系統資訊的用途。 -->
+
+詳細說明AcroCube Clinet中的系統資訊頁面。
+
+系統資訊頁面是使用者登入AcroCube Client後第一個看到的頁面。
 
 ## 前置條件
 

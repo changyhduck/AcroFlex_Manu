@@ -49,7 +49,13 @@ body {
 .search-box input::placeholder { color: #abc0d2; }
 .search-status { min-height: 1.2rem; margin: 8px 4px 10px; color: #b9cbe0; font-size: .78rem; }
 
-.chapter-nav { display: grid; gap: 2px; }
+.chapter-nav { display: grid; gap: 5px; }
+.chapter-group-header { display: flex; align-items: center; }
+.chapter-group-header .chapter-button { flex: 1; }
+.chapter-children { display: grid; gap: 2px; margin: 2px 0 3px; }
+.chapter-toggle { width: 26px; min-width: 26px; height: 34px; padding: 0; color: #9fc1da; font: inherit; font-size: 1.5rem; line-height: 1; background: transparent; border: 0; border-radius: 7px; cursor: pointer; transform: rotate(0deg); transition: transform .16s ease, color .16s ease, background .16s ease; }
+.chapter-toggle[aria-expanded="true"] { transform: rotate(90deg); }
+.chapter-toggle:hover, .chapter-toggle:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .chapter-button { width: 100%; padding: 9px 10px; color: #d2e0ed; font: inherit; font-size: .92rem; text-align: left; background: transparent; border: 0; border-radius: 7px; cursor: pointer; }
 .chapter-button:hover, .chapter-button:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .chapter-button.is-active { color: #fff; font-weight: 700; background: var(--blue); }
@@ -85,6 +91,12 @@ p { margin: 0 0 16px; }
 .content :not(pre) > code { padding: 1px 5px; color: #175e98; font-size: .92em; background: #e8f3fb; border-radius: 4px; }
 .login-screen { max-width: 920px; margin: 18px 0 30px; }
 .login-screen img { height: auto; max-height: none; padding: 0; }
+.system-info-screen { max-width: 1120px; margin: 18px 0 30px; }
+.system-info-screen img { height: auto; max-height: none; padding: 0; }
+.network-settings-screen { max-width: 1120px; margin: 18px 0 30px; }
+.network-settings-screen img { height: auto; max-height: none; padding: 0; }
+.storage-screen { max-width: 1120px; margin: 18px 0 30px; }
+.storage-screen img { height: auto; max-height: none; padding: 0; }
 .empty-state { padding: 25px; margin-top: 26px; color: #566b7e; background: #fff; border: 1px dashed #b9c9d8; border-radius: 10px; }
 .content-placeholder { color: var(--muted); }
 
@@ -93,6 +105,8 @@ p { margin: 0 0 16px; }
   .sidebar { position: relative; height: auto; min-height: 0; padding: 18px 16px; overflow: visible; }
   .brand { margin-bottom: 18px; }
   .chapter-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 4px; }
+  .chapter-group { min-width: 0; }
+  .chapter-group-header .chapter-button { min-width: 0; }
   .chapter-button { font-size: .8rem; }
   .chapter-button.level-2 { padding-left: 10px; }
   .sidebar-footer { display: none; }
