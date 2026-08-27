@@ -110,6 +110,44 @@ p { margin: 0 0 16px; }
 .storage-screen img { height: auto; max-height: none; padding: 0; }
 .cluster-screen { max-width: 1120px; margin: 18px 0 30px; }
 .cluster-screen img { height: auto; max-height: none; padding: 0; }
+.cache-screen { max-width: 1120px; margin: 18px 0 30px; }
+.cache-screen img { height: auto; max-height: none; padding: 0; }
+.time-screen { max-width: 1120px; margin: 18px 0 30px; }
+.time-screen img { height: auto; max-height: none; padding: 0; }
+.password-screen { max-width: 1120px; margin: 18px 0 30px; }
+.password-screen img { height: auto; max-height: none; padding: 0; }
+.hostname-screen { max-width: 1120px; margin: 18px 0 30px; }
+.hostname-screen img { height: auto; max-height: none; padding: 0; }
+.samba-screen { max-width: 1120px; margin: 18px 0 30px; }
+.samba-screen img { height: auto; max-height: none; padding: 0; }
+.ssh-screen { max-width: 1120px; margin: 18px 0 30px; }
+.ssh-screen img { height: auto; max-height: none; padding: 0; }
+.buzzer-screen { max-width: 1120px; margin: 18px 0 30px; }
+.buzzer-screen img { height: auto; max-height: none; padding: 0; }
+.port-screen { max-width: 1120px; margin: 18px 0 30px; }
+.port-screen img { height: auto; max-height: none; padding: 0; }
+.firmware-screen, .firmware-file-screen, .firmware-check-screen { max-width: 1120px; margin: 18px 0 30px; }
+.firmware-screen img, .firmware-file-screen img, .firmware-check-screen img { height: auto; max-height: none; padding: 0; }
+.vms-screen { max-width: 1120px; margin: 18px 0 30px; }
+.vms-screen img { height: auto; max-height: none; padding: 0; }
+.normal-mode-screen { max-width: 1120px; margin: 18px 0 30px; }
+.normal-mode-screen img { height: auto; max-height: none; padding: 0; }
+.maintenance-screen { max-width: 1120px; margin: 18px 0 30px; }
+.maintenance-screen img { height: auto; max-height: none; padding: 0; }
+.remove-cloud-screen { max-width: 1120px; margin: 18px 0 30px; }
+.remove-cloud-screen img { height: auto; max-height: none; padding: 0; }
+.locate-disk-screen { max-width: 1120px; margin: 18px 0 30px; }
+.locate-disk-screen img { height: auto; max-height: none; padding: 0; }
+.disk-monitor-screen { max-width: 1120px; margin: 18px 0 30px; }
+.disk-monitor-screen img { height: auto; max-height: none; padding: 0; }
+.queue-depth-screen { max-width: 1120px; margin: 18px 0 30px; }
+.queue-depth-screen img { height: auto; max-height: none; padding: 0; }
+.logout-screen { max-width: 1120px; margin: 18px 0 30px; }
+.logout-screen img { height: auto; max-height: none; padding: 0; }
+.shutdown-screen, .shutdown-confirm-screen { max-width: 1120px; margin: 18px 0 30px; }
+.shutdown-screen img, .shutdown-confirm-screen img { height: auto; max-height: none; padding: 0; }
+.reboot-screen, .reboot-confirm-screen { max-width: 1120px; margin: 18px 0 30px; }
+.reboot-screen img, .reboot-confirm-screen img { height: auto; max-height: none; padding: 0; }
 .empty-state { padding: 25px; margin-top: 26px; color: #566b7e; background: #fff; border: 1px dashed #b9c9d8; border-radius: 10px; }
 .content-placeholder { color: var(--muted); }
 

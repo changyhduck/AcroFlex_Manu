@@ -26,11 +26,17 @@ status: outline
 <!-- 依序列出要說明的操作。 -->
 
 1. 先確認該AcroCube超融合主機能否對外通訊。
-2.
+2. 設定本AcroCube伺服器所在的時區，例如：(請AI舉例)。
+3. 輸入校時伺服器名稱或手動設定系統時間。
+4. 按“確認/即時校時"按鍵儲存設定。
 
 ## 注意事項與限制
 
 <!-- 列出時間差異對系統的影響。 -->
+
+AcroCube_Time_Setting_Chinese.png 操作綱要4之後即可
+
+在開始時，請先解釋AcroCube_Time_Setting_Chinese.png 的內容。之後再開始操作。
 
 ## 素材對照
 

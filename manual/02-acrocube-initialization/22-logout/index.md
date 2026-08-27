@@ -1,4 +1,5 @@
 ---
+
 number: "2.22"
 title: "登出 AcroCube 管理頁面"
 status: outline
@@ -10,9 +11,15 @@ status: outline
 
 <!-- 說明本節要讓讀者完成的工作。 -->
 
+本節說明登出AcroCube Client的方法。
+
 ## 操作綱要
 
 <!-- 依序列出要說明的登出步驟。 -->
+
+1. 按"登出"按鈕。
+
+   AcroCube_logout_chinese.png放在這。
 
 ## 注意事項與限制
 
