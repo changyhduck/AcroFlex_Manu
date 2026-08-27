@@ -37,6 +37,12 @@ const chapters = [
     lead: "確認可用硬碟、建立 RAID 磁碟陣列，並驗證成員碟與熱備援磁碟的狀態。",
     body: `<div class="callout"><strong>注意：</strong>建立或重新規劃磁碟陣列可能影響所選硬碟上的既有資料。請只選取確認可初始化的未使用硬碟；若硬碟已有資料，請先完成備份並依維運程序處理。</div><h2>前置條件</h2><ul><li>已以具管理權限的帳號登入 AcroCube 管理介面。</li><li>已將規劃使用的硬碟正確安裝至 AcroCube 主機，且可在「磁碟管理」頁面中辨識。</li><li>已確認磁碟的容量、型號與介面符合部署規劃；建議同一陣列使用容量與效能特性相近的磁碟。</li><li>已決定 RAID 等級、資料磁碟數量及熱備援磁碟配置。</li></ul><h2>1. 確認可用磁碟</h2><p>點選「<strong>儲存設定</strong>」後，系統會開啟「磁碟管理」頁面，列出由主機偵測到、可供規劃使用的磁碟。請先核對插槽、狀態、容量、製造商、介面速度、型號與韌體版本；「定位」可協助現場人員確認對應的實體插槽。</p><p>右上角的「<strong>重新整理</strong>」可重新讀取磁碟狀態。NVMe 區域會另外列出所偵測到的 NVMe 磁碟；若顯示 <code>NO NVMe Data</code>，代表該範例環境未偵測到可列出的 NVMe 磁碟。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/1_AcroCube_Storage_Disk_Manager_Chinese.png" alt="AcroCube 磁碟管理頁面"><figcaption>圖 2.4-1　磁碟管理頁面。</figcaption></figure><h2>2. 開啟 RAID 管理頁面</h2><p>在「儲存設定」中點選「<strong>RAID 管理</strong>」。第一次建立時，陣列清單會顯示 <code>Empty</code>，代表尚未建立可用的 RAID 陣列。此時可使用「建立」新增陣列；「擴充」、「定位」、「硬碟資訊」與「刪除」則要在有可操作陣列後才會啟用。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/2_AcroCube_Storage_RAID_Empty_Chinese.png" alt="尚未建立陣列的 RAID 管理頁面"><figcaption>圖 2.4-2　尚未建立陣列的 RAID 管理頁面。</figcaption></figure><h2>3. 開啟建立磁碟陣列對話框</h2><p>點選「<strong>建立</strong>」後，系統會開啟建立磁碟陣列對話框。請先選擇 RAID 級別，再勾選要加入陣列的實體磁碟。系統會依 RAID 級別提示最低磁碟數量；在尚未符合條件前，「確認後開始建立」無法使用。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/3_AcroCube_Storage_RAID_Create_1_Chinese.png" alt="建立磁碟陣列對話框"><figcaption>圖 2.4-3　建立磁碟陣列對話框。</figcaption></figure><h2>4. 選擇 RAID 級別</h2><p>開啟「RAID 級別」下拉選單，可選擇 <code>Single Disk / JBOD</code>、<code>RAID 1</code>、<code>RAID 5</code>、<code>RAID 6</code> 或 <code>RAID 7</code>。請依資料保護需求、可接受的容量利用率與可用硬碟數量選擇。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/4_AcroCube_Storage_RAID_Select_RAID_Level_Chinese.png" alt="RAID 級別下拉選單"><figcaption>圖 2.4-4　RAID 級別下拉選單。</figcaption></figure><table class="feature-table"><thead><tr><th scope="col">RAID 級別</th><th scope="col">一般最低磁碟數</th><th scope="col">特性與限制</th></tr></thead><tbody><tr><td>Single Disk / JBOD</td><td>1</td><td>保留單碟容量，但不提供 RAID 層級容錯保護。</td></tr><tr><td>RAID 1</td><td>2</td><td>以鏡像提供資料冗餘；可用容量受單一成員碟容量限制。</td></tr><tr><td>RAID 5</td><td>3</td><td>兼顧容量利用率與單一磁碟故障保護；可承受 1 顆成員碟故障。</td></tr><tr><td>RAID 6</td><td>4</td><td>使用雙重同位元校驗；容量利用率較 RAID 5 低，但可提供較高故障容忍度。</td></tr><tr><td>RAID 7</td><td>5</td><td>ZFS 專屬 RAID 7，具三容錯能力，適合高密度、大容量硬碟陣列的多碟重建情境。</td></tr></tbody></table><div class="callout"><strong>建議：</strong>請避免混用容量明顯不同的磁碟。陣列通常以最小成員碟容量為基準；實際可選項目、最低磁碟數與可用容量仍以管理介面與核准的產品部署規格為準。</div><h2>5. 選取磁碟並建立 RAID 5</h2><p>以下以 RAID 5 為例。選擇「<strong>RAID 5</strong>」後，介面會提示至少需選擇三顆磁碟。範例中勾選插槽 1 至 7 的七顆磁碟，插槽 8 保留未選取；核對插槽、容量與狀態均符合規劃後，按下「<strong>確認後開始建立</strong>」。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/5_AcroCube_Storage_RAID_Select_Disks_Chinese.png" alt="選擇 RAID 5 與成員磁碟"><figcaption>圖 2.4-5　選擇 RAID 5 與成員磁碟。</figcaption></figure><p>未被選擇的磁碟會自動成為<strong>熱備援磁碟</strong>。若要保留某顆磁碟作熱備援，請不要勾選它，並確認其容量大於或等於陣列中最小成員碟容量。</p><p>送出建立要求後，系統會顯示「資料處理中，請稍候」。建立期間請等待作業完成，不要關閉管理頁面、重新啟動主機、拔除磁碟或變更儲存設定。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/6_AcroCube_Storage_RAID_Creating_Chinese.png" alt="正在建立磁碟陣列"><figcaption>圖 2.4-6　正在建立磁碟陣列。</figcaption></figure><h2>6. 確認磁碟陣列已建立</h2><p>建立完成後，返回或重新整理「RAID 管理」頁面。當清單顯示 RAID 級別、總容量與狀態 <code>Ready</code>，表示陣列已建立完成。範例顯示 RAID ID <code>1</code>、RAID 5、已使用空間 <code>0.00 GB</code>、總容量 <code>2,649.13 GB</code>；實際容量會依成員碟數量、最小容量、RAID 等級與系統換算方式而不同。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/7_AcroCube_Storage_RAID_Created_Chinese.png" alt="已建立完成的 RAID 5 磁碟陣列"><figcaption>圖 2.4-7　已建立完成的 RAID 5 磁碟陣列。</figcaption></figure><h2>7. 確認成員碟與熱備援碟</h2><p>切換回「<strong>磁碟管理</strong>」頁面，確認各實體磁碟的狀態。範例中，插槽 1 至 7 顯示 <code>Ready</code>，表示已加入並可供磁碟陣列使用；插槽 8 顯示 <code>Unused</code>，表示未加入 RAID 5 陣列，並依本流程作為熱備援磁碟。</p><p>請確認保留為 <code>Unused</code> 的磁碟容量符合熱備援需求。下方 NVMe 清單會另外列出偵測到的 NVMe 裝置與狀態，應依實際硬體規劃判讀。</p><figure class="figure-card storage-screen"><img src="manual/02-acrocube-initialization/04-storage-array/assets/screenshots/8_AcroCube_Storage_Disk_Manager_used_chinese.png" alt="建立陣列後的磁碟管理狀態"><figcaption>圖 2.4-8　建立陣列後的磁碟管理狀態。</figcaption></figure><h2>注意事項</h2><ul><li>每種 RAID 級別都有最小磁碟數量限制；未選取足夠磁碟時無法建立陣列。</li><li>未加入陣列的磁碟會自動成為熱備援磁碟。</li><li>熱備援磁碟容量必須大於或等於陣列中最小成員碟容量。</li><li>若主機用於混合或儲存角色，請在加入 AcroFlex 系統前完成 RAID 建立與確認。</li></ul>`
   },
+  {
+    id: "2.5", number: "2.5.", title: "建立叢集", level: 2,
+    keywords: "建立叢集 主機雲 AcroVMS VMS 管理 IP 網路遮罩 RAID Ready AcroFlex Client",
+    lead: "完成 AcroCube 初始化後，建立 AcroFlex 超融合主機雲，並設定其獨立的 AcroVMS 管理 IP。",
+    body: `<div class="callout"><strong>重要：</strong>VMS 管理 IP 必須與 AcroCube 第一個虛擬交換機使用相同網段，且必須是網路中尚未被使用的有效 IP 位址。建立前請先確認 IP 配置，避免與其他設備衝突。</div><h2>前置條件</h2><ul><li>已完成 AcroCube 的網路設定，並確認第一個虛擬交換機可正常使用。</li><li>已完成磁碟陣列建立，且 RAID 狀態為 <code>Ready</code>。</li><li>已準備一組供 VMS 使用的管理 IP 位址與網路遮罩。</li><li>已確認 VMS 管理 IP 不會與 AcroCube、閘道、交換器、其他伺服器或 DHCP 配發範圍衝突。</li></ul><h2>VMS 管理 IP 規劃範例</h2><table class="feature-table"><thead><tr><th scope="col">項目</th><th scope="col">範例值</th></tr></thead><tbody><tr><td>AcroCube 管理 IP</td><td><code>192.168.95.107</code></td></tr><tr><td>網路遮罩</td><td><code>255.255.248.0</code></td></tr><tr><td>VMS 管理 IP</td><td><code>192.168.95.108</code></td></tr></tbody></table><p>遮罩 <code>255.255.248.0</code> 等同於 <code>/21</code>，其網段範圍為 <code>192.168.88.0/21</code>。因此 <code>192.168.95.107</code> 與 <code>192.168.95.108</code> 都在同一網段內，可作為本例中的 AcroCube 與 VMS 管理位址。</p><p>若將 VMS 設為 <code>192.168.96.108</code>，此位址不屬於 <code>192.168.88.0/21</code> 網段，不能作為本例第一個虛擬交換機的 VMS 管理 IP。</p><h2>1. 開啟建立叢集功能</h2><p>在 AcroCube Client 頂端功能列點選「<strong>建立叢集</strong>」。此功能用於開始建立新的 AcroFlex 超融合主機雲，並設定 VMS 的管理入口。進入下一步前，請確認已完成網路與 RAID 設定。</p><figure class="figure-card cluster-screen"><img src="manual/02-acrocube-initialization/05-create-cluster/assets/screenshots/AcroCube_Create_Cluster_butten_Chinese.png" alt="AcroCube Client 的建立叢集按鈕"><figcaption>圖 2.5-1　AcroCube Client 的建立叢集按鈕。</figcaption></figure><h2>2. 檢查建立新的主機雲資訊</h2><p>系統會開啟「<strong>建立新的主機雲</strong>」對話框。請輸入 VMS 的管理入口資訊，再檢查系統帶入的主機資訊是否正確。</p><table class="feature-table"><thead><tr><th scope="col">欄位</th><th scope="col">說明與檢查重點</th></tr></thead><tbody><tr><td>IP 位置</td><td>VMS 的獨立管理 IP；必須與 AcroCube 第一個虛擬交換機位於相同網段，且不得與其他裝置重複。</td></tr><tr><td>遮罩</td><td>VMS 管理 IP 所使用的網路遮罩，應與第一個虛擬交換機的遮罩一致。</td></tr><tr><td>主機 IP</td><td>顯示即將加入主機雲的 AcroCube 管理 IP；請確認這是預期的主機。</td></tr><tr><td>主機名稱</td><td>顯示 AcroCube 主機名稱，可作為辨識主機的參考。</td></tr><tr><td>RAID 狀態</td><td>建立前必須顯示 <code>Ready</code>，表示磁碟陣列已完成建立並可供使用。</td></tr><tr><td>已加入叢集</td><td>新建主機雲時應顯示 <code>False</code>，表示此主機尚未加入既有叢集。</td></tr></tbody></table><p>範例中，VMS IP 為 <code>192.168.95.108</code>，遮罩為 <code>255.255.248.0</code>；主機 IP 為 <code>192.168.95.107</code>，RAID 狀態為 <code>Ready</code>，已加入叢集為 <code>False</code>。</p><figure class="figure-card cluster-screen"><img src="manual/02-acrocube-initialization/05-create-cluster/assets/screenshots/AcroCube_Create_Cluster_VMSIP_Chinese.png" alt="建立新的主機雲對話框"><figcaption>圖 2.5-2　建立新的主機雲對話框。</figcaption></figure><h2>3. 建立 AcroFlex 超融合主機雲</h2><p>確認 VMS 管理 IP、遮罩、主機資訊與 RAID 狀態均正確後，按下「<strong>確認</strong>」開始建立 AcroFlex 超融合主機雲。若要放棄本次設定，請按「取消」。</p><p>建立期間請保持 AcroCube 主機與管理網路正常連線，避免重新啟動主機、拔除磁碟或變更網路與儲存設定；請等待系統完成建立流程後，再進行後續操作。</p><h2>4. 以 VMS 管理 IP 登入 AcroFlex Client</h2><p>主機雲建立完成後，請在管理電腦的瀏覽器使用新的 VMS 管理 IP 登入 AcroFlex Client。例如本節範例可使用：</p><pre class="command-block"><code>https://192.168.95.108</code></pre><p>實際登入網址與連線方式請以系統畫面、部署規格及環境的憑證設定為準。若無法連線，應先檢查 VMS IP、遮罩、第一個虛擬交換機與管理網路設定。</p><h2>注意事項</h2><ul><li>VMS 管理 IP 必須與 AcroCube 第一個虛擬交換機位於同一網段。</li><li>建立叢集前，請先完成 RAID 建立，並確認 RAID 狀態為 <code>Ready</code>。</li><li>VMS 管理 IP 必須是獨立且未被使用的位址，不可與 AcroCube 管理 IP 或其他網路設備重複。</li><li>螢幕快照中的 IP 位址與主機名稱僅為範例，請勿直接套用至正式環境。</li></ul>`
+  },
   { id: "3", number: "3.", title: "AcroFlex 超融合系統管理", level: 1, keywords: "AcroFlex 管理 叢集 節點 系統", lead: "本章說明 AcroFlex 超融合系統的日常管理功能。", body: `<div class="empty-state">內容準備中。</div>` },
   { id: "4", number: "4.", title: "帳號管理", level: 1, keywords: "帳號 使用者 權限 角色", lead: "本章說明使用者帳號、角色與權限的管理方式。", body: `<div class="empty-state">內容準備中。</div>` },
   { id: "5", number: "5.", title: "雲主機和雲桌面管理", level: 1, keywords: "雲主機 雲桌面 VM VDI 虛擬機", lead: "本章說明雲主機與雲桌面的建立、管理及操作。", body: `<div class="empty-state">內容準備中。</div>` },
@@ -50,9 +56,107 @@ const nav = document.querySelector("#chapter-nav");
 const content = document.querySelector("#manual-content");
 const search = document.querySelector("#chapter-search");
 const searchStatus = document.querySelector("#search-status");
+const searchResults = document.querySelector("#search-results");
 const chapterGroups = new Map();
+const additionalSearchText = {
+  "1.1": "供電規劃 1100W 1+1 熱備援 雙迴路 UPS PDU 110V 220V",
+  "2.4": "磁碟列表欄位說明 項次 插槽 製造商 介面速度 型號 韌體版本 動作 RAID ID 已使用空間 總容量",
+};
 
-function renderContent(chapter) {
+function normalizeSearchText(value) {
+  return value.replace(/\s+/g, " ").trim().toLowerCase();
+}
+
+function createChapterSearchIndex(chapter) {
+  const template = document.createElement("template");
+  template.innerHTML = chapter.body;
+  const elements = [...template.content.children];
+  const headingIndexes = elements
+    .map((element, index) => element.tagName === "H2" ? index : -1)
+    .filter((index) => index >= 0);
+  const sharedText = `${chapter.number} ${chapter.title} ${chapter.keywords} ${chapter.lead} ${additionalSearchText[chapter.id] || ""}`;
+  const sections = [{
+    title: "章節概述",
+    text: normalizeSearchText(`${sharedText} ${elements.slice(0, headingIndexes[0] ?? elements.length).map((element) => element.textContent).join(" ")}`),
+  }];
+
+  headingIndexes.forEach((start, position) => {
+    const end = headingIndexes[position + 1] || elements.length;
+    const heading = elements[start];
+    sections.push({
+      title: heading.textContent.trim(),
+      text: normalizeSearchText(elements.slice(start, end).map((element) => element.textContent).join(" ")),
+    });
+  });
+  return { chapter, sections };
+}
+
+const chapterSearchIndex = chapters.map(createChapterSearchIndex);
+
+function makeSearchSnippet(text, query) {
+  const matchAt = text.indexOf(query);
+  const start = Math.max(0, matchAt - 36);
+  const end = Math.min(text.length, matchAt + query.length + 72);
+  return `${start > 0 ? "…" : ""}${text.slice(start, end)}${end < text.length ? "…" : ""}`;
+}
+
+function findSearchMatches(query) {
+  return chapterSearchIndex.flatMap(({ chapter, sections }) => sections
+    .filter((section) => section.text.includes(query))
+    .map((section) => ({ chapter, section, snippet: makeSearchSnippet(section.text, query) })));
+}
+
+function renderSearchResults(matches, query) {
+  searchResults.replaceChildren();
+  searchResults.hidden = !query;
+  if (!query) return;
+
+  matches.slice(0, 30).forEach(({ chapter, section, snippet }) => {
+    const result = document.createElement("button");
+    result.type = "button";
+    result.className = "search-result";
+    const title = document.createElement("strong");
+    title.textContent = `${chapter.number} ${chapter.title}`;
+    const location = document.createElement("span");
+    location.textContent = section.title;
+    const preview = document.createElement("small");
+    preview.textContent = snippet;
+    result.append(title, location, preview);
+    result.addEventListener("click", () => selectChapter(chapter.id, section.title, query));
+    searchResults.append(result);
+  });
+}
+
+function highlightMatches(query) {
+  if (!query) return;
+  const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.parentElement && !["MARK", "SCRIPT", "STYLE"].includes(node.parentElement.tagName)) textNodes.push(node);
+  }
+  textNodes.forEach((node) => {
+    const text = node.nodeValue;
+    const normalized = text.toLowerCase();
+    if (!normalized.includes(query)) return;
+    const fragment = document.createDocumentFragment();
+    let cursor = 0;
+    let matchAt = normalized.indexOf(query, cursor);
+    while (matchAt >= 0) {
+      fragment.append(text.slice(cursor, matchAt));
+      const mark = document.createElement("mark");
+      mark.className = "search-highlight";
+      mark.textContent = text.slice(matchAt, matchAt + query.length);
+      fragment.append(mark);
+      cursor = matchAt + query.length;
+      matchAt = normalized.indexOf(query, cursor);
+    }
+    fragment.append(text.slice(cursor));
+    node.replaceWith(fragment);
+  });
+}
+
+function renderContent(chapter, sectionTitle, query) {
   document.title = `${chapter.number} ${chapter.title}｜AcroFlex 使用手冊`;
   const parentChapter = chapter.number.split(".")[0];
   content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1>${chapter.number} ${chapter.title}</h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? `<span class="tag">第 ${parentChapter} 章子章節</span>` : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
@@ -76,11 +180,16 @@ function renderContent(chapter) {
     const createdRaidFigure = storageFigures[6];
     createdRaidFigure.insertAdjacentHTML("afterend", `<h3>磁碟陣列列表欄位說明</h3><table class="feature-table"><thead><tr><th scope="col">欄位</th><th scope="col">說明</th></tr></thead><tbody><tr><td>RAID ID</td><td>磁碟陣列的識別編號；後續查看、定位、擴充或維護時，可用此編號辨識目標陣列。</td></tr><tr><td>RAID 級別</td><td>顯示陣列所使用的 RAID 保護方式，例如 <code>RAID 5</code>；應與建置規劃相符。</td></tr><tr><td>已使用空間</td><td>顯示目前已由陣列使用的容量。新建立、尚未投入使用的陣列通常顯示為 <code>0.00 GB</code>。</td></tr><tr><td>總容量</td><td>顯示建立後可供使用的陣列容量，會受成員碟容量、RAID 級別與系統容量換算方式影響。</td></tr><tr><td>狀態</td><td>顯示磁碟陣列目前狀態；<code>Ready</code> 表示陣列已建立完成並可供後續部署流程使用。</td></tr></tbody></table>`);
   }
+  highlightMatches(query);
   document.querySelectorAll(".chapter-button").forEach((button) => button.classList.toggle("is-active", button.dataset.id === chapter.id));
   history.replaceState(null, "", `#${chapter.id}`);
+  if (sectionTitle && sectionTitle !== "章節概述") {
+    const targetHeading = [...content.querySelectorAll("h2")].find((heading) => heading.textContent === sectionTitle);
+    if (targetHeading) targetHeading.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
-function selectChapter(id) {
+function selectChapter(id, sectionTitle, query) {
   const chapter = chapters.find((item) => item.id === id) || chapters[1];
   const parentId = chapter.level === 1 ? chapter.id : chapter.id.split(".")[0];
   const parentGroup = chapterGroups.get(parentId);
@@ -88,8 +197,8 @@ function selectChapter(id) {
     parentGroup.content.hidden = false;
     parentGroup.toggle.setAttribute("aria-expanded", "true");
   }
-  renderContent(chapter);
-  content.focus({ preventScroll: true });
+  renderContent(chapter, sectionTitle, query);
+  content.focus({ preventScroll: Boolean(sectionTitle) });
 }
 
 let activeGroup;
@@ -139,13 +248,15 @@ chapterGroups.forEach(({ content, toggle }) => {
 });
 
 search.addEventListener("input", () => {
-  const query = search.value.trim().toLowerCase();
-  let results = 0;
+  const query = normalizeSearchText(search.value);
+  const matches = query ? findSearchMatches(query) : [];
+  const matchingChapterIds = new Set(matches.map(({ chapter }) => chapter.id));
+  const visibleChapterIds = new Set(matchingChapterIds);
+  matchingChapterIds.forEach((id) => {
+    if (id.includes(".")) visibleChapterIds.add(id.split(".")[0]);
+  });
   document.querySelectorAll(".chapter-button").forEach((button) => {
-    const chapter = chapters.find((item) => item.id === button.dataset.id);
-    const matches = !query || `${chapter.number} ${chapter.title} ${chapter.keywords} ${chapter.lead}`.toLowerCase().includes(query);
-    button.hidden = !matches;
-    if (matches) results += 1;
+    button.hidden = Boolean(query) && !visibleChapterIds.has(button.dataset.id);
   });
   chapterGroups.forEach(({ content, toggle, group }) => {
     const hasVisibleChapter = [...group.querySelectorAll(".chapter-button")].some((button) => !button.hidden);
@@ -155,7 +266,8 @@ search.addEventListener("input", () => {
       toggle.setAttribute("aria-expanded", "true");
     }
   });
-  searchStatus.textContent = query ? `找到 ${results} 個相關章節` : "";
+  renderSearchResults(matches, query);
+  searchStatus.textContent = query ? `找到 ${matches.length} 個相關段落，分布於 ${matchingChapterIds.size} 個章節` : "";
 });
 
 selectChapter(decodeURIComponent(location.hash.slice(1)) || "1.1");

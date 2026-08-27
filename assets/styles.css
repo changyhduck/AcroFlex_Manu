@@ -48,6 +48,14 @@ body {
 .search-box input { width: 100%; padding: 11px 0; color: #fff; font: inherit; background: transparent; border: 0; outline: 0; }
 .search-box input::placeholder { color: #abc0d2; }
 .search-status { min-height: 1.2rem; margin: 8px 4px 10px; color: #b9cbe0; font-size: .78rem; }
+.search-results { display: grid; gap: 5px; max-height: 36vh; margin: 0 0 12px; padding: 3px; overflow-y: auto; border: 1px solid #3a5973; border-radius: 9px; background: #183650; }
+.search-results[hidden] { display: none; }
+.search-result { width: 100%; padding: 9px 10px; color: #dce9f6; font: inherit; text-align: left; background: transparent; border: 0; border-radius: 6px; cursor: pointer; }
+.search-result:hover, .search-result:focus-visible { color: #fff; background: #254b6b; outline: none; }
+.search-result strong, .search-result span, .search-result small { display: block; }
+.search-result strong { font-size: .84rem; }
+.search-result span { margin-top: 2px; color: #8fd2f4; font-size: .76rem; }
+.search-result small { display: -webkit-box; margin-top: 3px; overflow: hidden; color: #b9cbe0; font-size: .72rem; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 .chapter-nav { display: grid; gap: 5px; }
 .chapter-group-header { display: flex; align-items: center; }
@@ -91,6 +99,7 @@ p { margin: 0 0 16px; }
 .command-block { padding: 12px 14px; margin: 12px 0; overflow-x: auto; color: #e8f3fb; background: #183650; border-radius: 8px; }
 .command-block code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .content :not(pre) > code { padding: 1px 5px; color: #175e98; font-size: .92em; background: #e8f3fb; border-radius: 4px; }
+.search-highlight { padding: 0 2px; color: inherit; background: #ffe58a; border-radius: 3px; }
 .login-screen { max-width: 920px; margin: 18px 0 30px; }
 .login-screen img { height: auto; max-height: none; padding: 0; }
 .system-info-screen { max-width: 1120px; margin: 18px 0 30px; }
@@ -99,6 +108,8 @@ p { margin: 0 0 16px; }
 .network-settings-screen img { height: auto; max-height: none; padding: 0; }
 .storage-screen { max-width: 1120px; margin: 18px 0 30px; }
 .storage-screen img { height: auto; max-height: none; padding: 0; }
+.cluster-screen { max-width: 1120px; margin: 18px 0 30px; }
+.cluster-screen img { height: auto; max-height: none; padding: 0; }
 .empty-state { padding: 25px; margin-top: 26px; color: #566b7e; background: #fff; border: 1px dashed #b9c9d8; border-radius: 10px; }
 .content-placeholder { color: var(--muted); }
 
