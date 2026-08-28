@@ -7,11 +7,24 @@ const chapters = [
   },
   {
     id: "1.1", number: "1.1.", title: "AHC-F3000 超融合主機", level: 2,
+    keywords: "AHC F3000 2U 12-bay 16-bay 24-bay PCIe 網路卡 無快取模組",
+    lead: "認識 AHC-F3000 的外觀、磁碟槽位變體、PCIe 網路擴充，以及基本安裝與供電注意事項。",
+    body: `<p>AHC-F3000 是 AcroCube 系列的 2U 機架式超融合主機。依第 1 章目前的產品規劃，AHC-F3000 不安裝磁碟陣列快取模組；主機的磁碟槽位、PCIe 網路擴充卡與其他硬體組態則依採購規格而異。</p><div class="callout"><strong>重要：</strong>本節的外觀與介面說明用於硬體辨識及基本安裝規劃。磁碟槽位數、網路卡數量與連接埠類型，應以實際出貨規格、主機標籤及機房網路設計為準。</div><h2>主機外觀</h2><p>AHC-F3000 的前面板提供磁碟槽、系統控制與狀態區、前置維護介面及機架把手。依訂購組態，可採用 3.5 吋 12-bay、2.5 吋 24-bay 或 2.5 吋 16-bay 的磁碟槽配置；下列圖片展示 12-bay 與 24-bay 前面板範例。</p><div class="hardware-figures"><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-12b-front.png" alt="AHC-F3000 12-bay 前面板"><figcaption>圖 1.1-1　AHC-F3000 12-bay 前面板。</figcaption></figure><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-24b-front.png" alt="AHC-F3000 24-bay 前面板"><figcaption>圖 1.1-2　AHC-F3000 24-bay 前面板。</figcaption></figure></div><p>後面板配置備援電源供應器、散熱模組、I/O／管理連接埠及 PCIe 擴充卡插槽。實際可見的網路連接埠會隨已安裝網路卡而不同。</p><div class="hardware-figures"><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-Back.png" alt="AHC-F3000 後面板"><figcaption>圖 1.1-3　AHC-F3000 後面板。</figcaption></figure></div><h2>主機組態重點</h2><table class="feature-table"><thead><tr><th scope="col">項目</th><th scope="col">說明</th></tr></thead><tbody><tr><td>機箱規格</td><td>2U 機架式 AcroCube 超融合主機。</td></tr><tr><td>快取模組</td><td>依目前第 1 章綱要，AHC-F3000 不安裝磁碟陣列快取模組。</td></tr><tr><td>磁碟槽位變體</td><td>可依組態提供 3.5 吋 12-bay、2.5 吋 24-bay 或 2.5 吋 16-bay 的配置。</td></tr><tr><td>PCIe 擴充</td><td>可利用 PCIe 擴充槽安裝多張網路卡，實際數量受主機出貨組態與擴充卡規格影響。</td></tr><tr><td>網路介面選項</td><td>可採用 1Gbps RJ45、10Gbps RJ45、10Gbps SFP+ 光纖、25Gbps SFP28 光纖或 100Gbps QSFP28 光纖等網路卡。</td></tr></tbody></table><h2>前面板功能</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>磁碟槽</td><td>安裝資料磁碟。各槽位的指示燈可協助辨識磁碟活動與異常狀態，但不應單獨作為拔除或更換磁碟的依據。</td></tr><tr><td>系統控制與狀態區</td><td>提供電源控制、系統識別及狀態指示功能；實際燈號定義請以機身標示與出貨文件為準。</td></tr><tr><td>前置維護介面</td><td>提供現場維護時使用的 USB 與影像服務介面。正常運作期間不建議插拔非必要設備。</td></tr><tr><td>機架把手</td><td>用於主機安裝、抽拉與固定。抽拉或搬運時，須確認滑軌已正確安裝並由足夠人力支撐設備重量。</td></tr></tbody></table><h2>後面板與網路擴充</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>備援電源供應器</td><td>後面板配置兩組電源供應器，提供備援電力。建議分別連接至不同的電源迴路或 UPS。</td></tr><tr><td>散熱模組</td><td>負責主機排風與溫度控制。應保持進、出風口暢通，不要遮擋或在未關機狀態下任意拆卸散熱元件。</td></tr><tr><td>I/O 與管理連接埠</td><td>提供管理、網路及維護用連接埠。接線前應依機身標籤、實際網路卡與網路規劃確認用途。</td></tr><tr><td>PCIe 擴充卡插槽</td><td>可安裝多張網路介面卡，提供不同速率與介面的網路連線。新增或更換擴充卡前，應確認相容性與維護安排。</td></tr></tbody></table><h2>安裝與接線建議</h2><ol><li>將主機固定於合適的機架與滑軌後，再進行電源與網路接線。</li><li>依實際網路卡與網路規劃，標示管理、儲存、叢集及其他用途的網路纜線，避免誤接。</li><li>兩組電源供應器應分接至獨立且具保護機制的 UPS、PDU 或供電迴路，使任一路電力異常時，另一路仍可供電。</li><li>初次開機前，確認磁碟槽、電源模組、網路線與其他可插拔元件均已牢靠裝妥。</li></ol><h2>注意事項</h2><ul><li>僅可依 AcroFlex 維護程序更換故障磁碟。請先在管理介面確認故障插槽，勿僅依前面板燈號直接拔除磁碟。</li><li>網路介面類型與速率依出貨組態不同；不要假設所有機器均配置相同的網路卡。</li><li>兩組電源不應共用同一斷路器、同一 UPS 或單一 PDU 上游電源，以維持備援效果。</li><li>實際支援的元件、插槽與相容性，應以採購規格、出貨文件及 AcroRed 原廠建議為準。</li></ul>`
+  },
+  /* 舊版 1.1 內容保留於版本控制歷史，不再載入網頁。
+  {
+    id: "1.1-legacy", number: "1.1.", title: "AHC-F3000 超融合主機", level: 2,
     keywords: "AHC F3000 主機 前面板 背面 硬體",
     lead: "AHC-F3000 是 AcroCube 超融合主機系列之一。本節收錄主機外觀與硬體辨識資訊。",
     body: `<h2>主機外觀</h2><p>AHC-F3000 為機架式 AcroCube 超融合主機。依儲存組態不同，前面板提供 12-bay 或 24-bay 磁碟槽配置；請以採購規格與主機標籤確認實際型號。</p><div class="hardware-figures"><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-12b-front.png" alt="AHC-F3000 12-bay 前面板"><figcaption>圖 1.1-1　AHC-F3000 12-bay 前面板</figcaption></figure><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-24b-front.png" alt="AHC-F3000 24-bay 前面板"><figcaption>圖 1.1-2　AHC-F3000 24-bay 前面板</figcaption></figure><figure class="figure-card"><img src="manual/01-acrocube-overview/01-ahc-f3000/assets/images/AHC-F3000-Back.png" alt="AHC-F3000 後面板"><figcaption>圖 1.1-3　AHC-F3000 後面板</figcaption></figure></div><h2>主機規格</h2><table class="feature-table"><thead><tr><th scope="col">項目</th><th scope="col">規格</th></tr></thead><tbody><tr><td>機箱規格</td><td>2U 標準工業機箱。</td></tr><tr><td>電源供應器</td><td>1,100W 以上，1+1 熱備援，支援 110V～220V 電源輸入。</td></tr><tr><td>中央處理器</td><td>AMD EPYC 9004 系列中央處理器，共 2 顆。</td></tr><tr><td>記憶體</td><td>DDR5 ECC Registered，128GB 以上。</td></tr><tr><td>乙太網路</td><td>標準配置：1Gbps RJ45 乙太網路 2 埠、10Gbps 光纖乙太網路 2 埠。選購配置：25Gbps 光纖乙太網路、10Gbps RJ45 乙太網路。</td></tr><tr><td>儲存裝置</td><td>All Flash 組態採用 2.5 吋 SATA 介面資料中心級 SSD；SAS 組態採用 2.5 吋 SAS 介面企業級 10,000RPM 硬碟；快取採用高速資料中心級 SSD。</td></tr><tr><td>作業系統</td><td>AcroFlex dHCI 超融合作業系統。</td></tr></tbody></table><h2>前面板功能</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>磁碟槽</td><td>安裝資料磁碟或快取磁碟。12-bay 與 24-bay 機型的槽位數不同；每個槽位的狀態燈可協助辨識磁碟活動與異常狀態。</td></tr><tr><td>系統控制與狀態區</td><td>提供電源控制、系統識別及狀態指示功能。維護人員可透過指示燈判斷主機電源或健康狀態；實際燈號定義請以機身標示與出貨文件為準。</td></tr><tr><td>前置服務介面</td><td>前面板配置 USB 與影像服務介面，供現場維護時連接鍵盤、滑鼠或螢幕使用。正常運作期間不建議插拔非必要設備。</td></tr><tr><td>機架把手</td><td>用於主機安裝、抽拉及固定。進行抽拉或搬運前，請確認滑軌已正確安裝並由足夠人力支撐設備重量。</td></tr></tbody></table><div class="callout"><strong>磁碟維護注意：</strong>僅可依 AcroFlex 系統的維護程序更換故障磁碟。請先在管理介面確認故障槽位，勿僅依前面板燈號直接拔除磁碟，以免影響叢集資料可用性。</div><h2>後面板功能</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>備援電源供應器</td><td>後面板左右兩側配置可熱插拔的電源供應器，提供備援電力。建議分別連接至不同的電源迴路或 UPS，以維持單一路電力異常時的可用性。</td></tr><tr><td>散熱模組</td><td>後方散熱區負責主機排風與溫度控制。請保持進、出風口暢通，避免遮擋或在未關機狀態下任意拆卸散熱元件。</td></tr><tr><td>I/O 與管理連接埠</td><td>中央 I/O 區提供管理、網路與維護用連接埠。連接埠種類及數量會依網路卡與出貨組態而不同，接線前請依機身標籤、網路規劃與實際規格確認。</td></tr><tr><td>擴充卡插槽</td><td>可安裝網路介面或其他擴充卡。新增或更換擴充卡前，請確認相容性、韌體版本與 AcroFlex 叢集維護窗口。</td></tr></tbody></table><h2>操作與接線建議</h2><ol><li>將主機固定於合適的機架與滑軌後，再進行電源與網路接線。</li><li>兩組電源供應器應分接至獨立且具保護機制的電源來源。</li><li>依網路規劃標示管理與資料網路纜線，避免將不同用途的網路接錯。</li><li>初次開機前，確認所有磁碟槽、電源模組與網路線均已牢靠裝妥。</li></ol><div class="callout"><strong>重要：</strong>本節用於硬體辨識與基本接線。各連接埠的精確用途、速率與數量應以 AHC-F3000 實際出貨規格、機身標籤及系統管理員的網路設計為準。</div>`
   },
-  { id: "1.2", number: "1.2.", title: "AHC-F2000 超融合主機", level: 2, keywords: "AHC F2000 主機 硬體", lead: "本節將說明 AHC-F2000 主機的硬體規格與外觀辨識方式。", body: `<div class="empty-state">內容準備中。請提供 AHC-F2000 的產品畫面、規格或操作描述，以建立本節內容。</div>` },
+  */
+  {
+    id: "1.2", number: "1.2.", title: "AHC-F2000 超融合主機", level: 2,
+    keywords: "AHC F2000 2U 快取模組 混合式儲存 HDD SSD Cache 12-bay 16-bay 24-bay PCIe 網路卡",
+    lead: "認識 AHC-F2000 的外觀、快取模組、混合式儲存架構、PCIe 網路擴充，以及基本安裝與供電注意事項。",
+    body: `<p>AHC-F2000 是 AcroCube 系列的 2U 機架式超融合主機。它與 AHC-F3000 的主要差異在於 AHC-F2000 安裝磁碟陣列快取模組，因此通常用於 HDD + SSD Cache 的混合式儲存架構；AHC-F3000 則不具備此快取模組。其他硬體組態，例如磁碟槽位與 PCIe 網路擴充卡，則依採購規格而異。</p><div class="callout"><strong>重要：</strong>快取模組是混合式儲存架構的一部分。更換、拔除或維護資料磁碟與快取模組前，必須先依 AcroFlex 儲存維護程序確認影響範圍，切勿只依前面板燈號直接操作。</div><h2>AHC-F2000 與 AHC-F3000 的主要差異</h2><table class="feature-table"><thead><tr><th scope="col">項目</th><th scope="col">AHC-F2000</th><th scope="col">AHC-F3000</th></tr></thead><tbody><tr><td>機箱規格</td><td>2U AcroCube 超融合主機。</td><td>2U AcroCube 超融合主機。</td></tr><tr><td>磁碟陣列快取模組</td><td>配置快取模組，可用於 HDD + SSD Cache 的混合式儲存架構。</td><td>不配置磁碟陣列快取模組。</td></tr><tr><td>儲存維護重點</td><td>除資料磁碟外，尚須依程序管理與維護快取模組。</td><td>依資料磁碟組態與維護程序處理。</td></tr></tbody></table><div class="callout"><strong>提醒：</strong>上表僅說明本章綱要定義的主要差異。實際磁碟、快取模組、處理器、記憶體、電源與網路組態，仍應以採購規格、主機標籤及出貨文件為準。</div><h2>主機外觀</h2><p>AHC-F2000 的前面板提供資料磁碟槽、系統控制與狀態區、前置維護介面及機架把手。依訂購組態，可採用 3.5 吋 12-bay、2.5 吋 24-bay 或 2.5 吋 16-bay 的磁碟槽配置；下列圖片展示 12-bay 與 24-bay 前面板範例。</p><div class="hardware-figures"><figure class="figure-card"><img src="manual/01-acrocube-overview/02-ahc-f2000/assets/images/AHC-F2000-12b-front.png" alt="AHC-F2000 12-bay 前面板"><figcaption>圖 1.2-1　AHC-F2000 12-bay 前面板。</figcaption></figure><figure class="figure-card"><img src="manual/01-acrocube-overview/02-ahc-f2000/assets/images/AHC-F2000-24b-front.png" alt="AHC-F2000 24-bay 前面板"><figcaption>圖 1.2-2　AHC-F2000 24-bay 前面板。</figcaption></figure></div><p>後面板配置備援電源供應器、散熱模組、I/O／管理連接埠及 PCIe 擴充卡插槽。實際可見的網路連接埠與快取模組配置會隨已安裝硬體而不同。</p><div class="hardware-figures"><figure class="figure-card"><img src="manual/01-acrocube-overview/02-ahc-f2000/assets/images/AHC-F2000-Back.png" alt="AHC-F2000 後面板"><figcaption>圖 1.2-3　AHC-F2000 後面板。</figcaption></figure></div><h2>主機組態重點</h2><table class="feature-table"><thead><tr><th scope="col">項目</th><th scope="col">說明</th></tr></thead><tbody><tr><td>機箱規格</td><td>2U 機架式 AcroCube 超融合主機。</td></tr><tr><td>磁碟陣列快取模組</td><td>配置快取模組，通常搭配資料磁碟建立 HDD + SSD Cache 的混合式儲存架構。實際數量、容量與介面依出貨組態而異。</td></tr><tr><td>磁碟槽位變體</td><td>可依組態提供 3.5 吋 12-bay、2.5 吋 24-bay 或 2.5 吋 16-bay 的配置。</td></tr><tr><td>PCIe 擴充</td><td>可利用 PCIe 擴充槽安裝多張網路卡，實際數量受主機出貨組態與擴充卡規格影響。</td></tr><tr><td>網路介面選項</td><td>可採用 1Gbps RJ45、10Gbps RJ45、10Gbps SFP+ 光纖、25Gbps SFP28 光纖或 100Gbps QSFP28 光纖等網路卡。</td></tr></tbody></table><h2>前面板功能</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>資料磁碟槽</td><td>安裝混合式儲存架構中的資料磁碟。各槽位指示燈可協助辨識活動與異常狀態，但不應單獨作為拔除或更換磁碟的依據。</td></tr><tr><td>系統控制與狀態區</td><td>提供電源控制、系統識別及狀態指示功能；實際燈號定義請以機身標示與出貨文件為準。</td></tr><tr><td>前置維護介面</td><td>提供現場維護時使用的 USB 與影像服務介面。正常運作期間不建議插拔非必要設備。</td></tr><tr><td>機架把手</td><td>用於主機安裝、抽拉與固定。抽拉或搬運時，須確認滑軌已正確安裝並由足夠人力支撐設備重量。</td></tr></tbody></table><h2>快取模組與混合式儲存架構</h2><p>AHC-F2000 的磁碟陣列快取模組可與 HDD 資料磁碟搭配使用，形成 HDD + SSD Cache 的混合式儲存架構。快取模組用於協助提升儲存存取效能；實際快取行為、快取磁碟規格與 RAID／儲存設定，應依 AcroFlex 系統設定及出貨規格確認。</p><p>在維護快取模組前，請先確認：</p><ol><li>已在 AcroFlex 管理介面辨識正確的故障元件與實體插槽。</li><li>已確認相關儲存服務、RAID 與工作負載的影響範圍。</li><li>已依原廠建議與維護程序完成必要的保護、備份或服務處理。</li><li>未將快取模組誤認為一般未使用的資料磁碟。</li></ol><h2>後面板與網路擴充</h2><table class="feature-table"><thead><tr><th scope="col">區域</th><th scope="col">功能說明</th></tr></thead><tbody><tr><td>備援電源供應器</td><td>後面板配置兩組電源供應器，提供備援電力。兩組電源應分別連接至不同的電源迴路或 UPS。</td></tr><tr><td>散熱模組</td><td>負責主機排風與溫度控制。應保持進、出風口暢通，不要遮擋或在未關機狀態下任意拆卸散熱元件。</td></tr><tr><td>I/O 與管理連接埠</td><td>提供管理、網路及維護用連接埠。接線前應依機身標籤、實際網路卡與網路規劃確認用途。</td></tr><tr><td>PCIe 擴充卡插槽</td><td>可安裝多張網路介面卡，提供不同速率與介面的網路連線。新增或更換擴充卡前，應確認相容性與維護安排。</td></tr></tbody></table><h2>安裝與接線建議</h2><ol><li>將主機固定於合適的機架與滑軌後，再進行資料磁碟、快取模組、電源與網路接線確認。</li><li>依實際網路卡與網路規劃，標示管理、儲存、叢集及其他用途的網路纜線，避免誤接。</li><li>兩組電源供應器應分接至獨立且具保護機制的 UPS、PDU 或供電迴路，使任一路電力異常時，另一路仍可供電。</li><li>初次開機前，確認資料磁碟、快取模組、電源模組、網路線與其他可插拔元件均已牢靠裝妥。</li></ol><h2>注意事項</h2><ul><li>快取模組為混合式儲存架構的一部分，未依程序拔除或更換可能影響資料與服務可用性。</li><li>不要僅依前面板燈號判斷要處理的磁碟或快取模組；應先在管理介面核對元件、插槽與狀態。</li><li>網路介面類型與速率依出貨組態不同；不要假設所有機器均配置相同的網路卡。</li><li>兩組電源不應共用同一斷路器、同一 UPS 或單一 PDU 上游電源，以維持備援效果。</li><li>實際支援的元件、快取組態、插槽與相容性，應以採購規格、出貨文件及 AcroRed 原廠建議為準。</li></ul>`
+  },
   { id: "2", number: "2.", title: "AcroCube 超融合主機初始化", level: 1, keywords: "初始化 設定 部署 AcroCube", lead: "本章將說明 AcroCube 主機的初始部署與必要設定。", body: `<div class="empty-state">內容準備中。提供初始化流程截圖與操作步驟後，即可在此建立完整說明。</div>` },
   {
     id: "2.1", number: "2.1.", title: "登入 AcroCube 管理頁面", level: 2,
@@ -173,7 +186,8 @@ const searchStatus = document.querySelector("#search-status");
 const searchResults = document.querySelector("#search-results");
 const chapterGroups = new Map();
 const additionalSearchText = {
-  "1.1": "供電規劃 1100W 1+1 熱備援 雙迴路 UPS PDU 110V 220V",
+  "1.1": "供電規劃 1100W 1400W 1+1 熱備援 雙迴路 UPS PDU 110V 220V",
+  "1.2": "供電規劃 1100W 1400W 1+1 熱備援 雙迴路 UPS PDU 110V 220V",
   "2.4": "磁碟列表欄位說明 項次 插槽 製造商 介面速度 型號 韌體版本 動作 RAID ID 已使用空間 總容量",
 };
 
@@ -230,7 +244,13 @@ function renderSearchResults(matches, query) {
     result.type = "button";
     result.className = "search-result";
     const title = document.createElement("strong");
-    title.textContent = `${chapter.number} ${chapter.title}`;
+    const chapterNumber = document.createElement("span");
+    chapterNumber.className = "chapter-number";
+    chapterNumber.textContent = chapter.number;
+    const chapterTitle = document.createElement("span");
+    chapterTitle.className = "chapter-title";
+    chapterTitle.textContent = chapter.title;
+    title.append(chapterNumber, chapterTitle);
     const location = document.createElement("span");
     location.textContent = section.title;
     const preview = document.createElement("small");
@@ -273,7 +293,7 @@ function highlightMatches(query) {
 function renderContent(chapter, sectionTitle, query) {
   document.title = `${chapter.number} ${chapter.title}｜AcroFlex 使用手冊`;
   const parentChapter = chapter.number.split(".")[0];
-  content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1>${chapter.number} ${chapter.title}</h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? `<span class="tag">第 ${parentChapter} 章子章節</span>` : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
+  content.innerHTML = `<p class="eyebrow">章節 ${chapter.number}</p><h1 class="chapter-heading"><span class="chapter-number" aria-hidden="true">${chapter.number}</span><span class="chapter-title">${chapter.title}</span></h1><p class="lead">${chapter.lead}</p><div class="metadata"><span class="tag">AcroFlex 使用手冊</span>${chapter.level === 2 ? `<span class="tag">第 ${parentChapter} 章子章節</span>` : '<span class="tag">第一層章節</span>'}</div>${chapter.body}`;
   const sectionHeadings = [...content.querySelectorAll("h2")];
   const specificationsHeading = sectionHeadings.find((heading) => heading.textContent === "主機規格");
   const appearanceHeading = sectionHeadings.find((heading) => heading.textContent === "主機外觀");
@@ -285,6 +305,15 @@ function renderContent(chapter, sectionTitle, query) {
       const powerPlanning = document.createElement("section");
       powerPlanning.innerHTML = `<h2>供電規劃</h2><p>AHC-F3000 配置 1,100W 以上、1+1 熱備援電源供應器。兩組電源供應器在正常情況下可共同分攤負載；但任一電源、PDU、UPS 或供電迴路異常時，另一組必須能獨立供應整台主機的完整負載。</p><table class="feature-table"><thead><tr><th scope="col">規劃項目</th><th scope="col">建議</th></tr></thead><tbody><tr><td>每迴路容量</td><td>每一條供電迴路應可獨立提供至少 1,100W；建議預留至少 20% 餘裕，以每台主機每迴路 1.32kW 進行容量規劃。</td></tr><tr><td>110V 供電參考</td><td>以 1,100W 計算的理論電流約為 10A；保留 20% 餘裕後約為 12A。若該迴路沒有其他負載，建議每迴路至少使用 15A 以上專用迴路。</td></tr><tr><td>220V 供電參考</td><td>以 1,100W 計算的理論電流約為 5A；保留 20% 餘裕後約為 6A。若該迴路沒有其他負載，建議每迴路至少使用 10A 以上專用迴路。</td></tr><tr><td>雙迴路接法</td><td>電源供應器 A 應接至迴路／UPS／PDU A；電源供應器 B 應接至獨立的迴路／UPS／PDU B。兩者不得共用同一斷路器、同一 UPS 或同一 PDU 的單一上游電源。</td></tr><tr><td>多主機估算</td><td>若有 N 台 AHC-F3000，每個迴路建議容量至少為 N × 1.32kW；並將網路設備、儲存設備及其他同迴路負載一併納入 UPS 與迴路容量計算。</td></tr></tbody></table><div class="callout"><strong>安裝前確認：</strong>1,100W 為電源供應器額定功率，實際輸入電流還會受電源效率、功率因數、磁碟與擴充卡組態影響。最終迴路、插座、UPS 與 PDU 規格應以電源供應器銘牌的輸入額定值、實際組態及合格電氣人員的評估為準。</div>`;
       content.insertBefore(powerPlanning, appearanceHeading);
+    }
+  }
+  if (["1.1", "1.2"].includes(chapter.id)) {
+    const rearPanelHeading = sectionHeadings.find((heading) => heading.textContent === "後面板與網路擴充");
+    const rearPanelTable = rearPanelHeading?.nextElementSibling;
+    if (rearPanelTable?.tagName === "TABLE") {
+      const powerPlanning = document.createElement("section");
+      powerPlanning.innerHTML = `<h2>供電規劃</h2><p>${chapter.title} 可配置 1,100W 或 1,400W 的 1+1 熱備援電源供應器。1+1 不表示兩條供電迴路各自只需承擔一半負載；為維持單一路電源異常時的可用性，<strong>每一條供電迴路都必須能獨立提供整台主機的完整額定負載</strong>。</p><p>下表以電源供應器額定功率加上 20% 容量餘裕計算，作為每台主機、每一條供電迴路的規劃參考。電流值以 <code>功率 ÷ 電壓</code> 估算，未納入實際電源效率、功率因數或其他同迴路設備負載。</p><table class="feature-table"><thead><tr><th scope="col">電源供應器配置</th><th scope="col">每迴路最低額定功率</th><th scope="col">每迴路規劃功率<br>（含 20% 餘裕）</th><th scope="col">110V 供電參考電流</th><th scope="col">220V 供電參考電流</th></tr></thead><tbody><tr><td>1,100W，1+1 熱備援</td><td>1.10kW</td><td>1.32kW</td><td>約 10A；含餘裕約 12A</td><td>約 5A；含餘裕約 6A</td></tr><tr><td>1,400W，1+1 熱備援</td><td>1.40kW</td><td>1.68kW</td><td>約 12.7A；含餘裕約 15.3A</td><td>約 6.4A；含餘裕約 7.6A</td></tr></tbody></table><h3>雙迴路接法</h3><p>電源供應器 A 應接至迴路／UPS／PDU A；電源供應器 B 應接至獨立的迴路／UPS／PDU B。兩者不得共用同一斷路器、同一 UPS，或同一 PDU 的單一上游電源。若任一路設備失效，另一迴路仍須可維持主機運作。</p><h3>機房電力規劃建議</h3><ul><li>規劃 110V 供電時，1,100W 組態每迴路約需 12A 的規劃容量；1,400W 組態每迴路約需 15.3A。應依迴路的連續負載限制、其他設備負載及電源銘牌額定值選擇足夠容量的專用迴路。</li><li>規劃 220V 供電時，1,100W 組態每迴路約需 6A；1,400W 組態每迴路約需 7.6A 的規劃容量。同樣應一併納入 UPS、PDU、網路設備及其他同迴路負載。</li><li>有 N 台同型主機時，每一供電迴路可先以 N × 每台每迴路規劃功率估算，再加上網路設備、儲存設備與其他負載的容量。</li></ul><div class="callout"><strong>電力安全提醒：</strong>1,100W 與 1,400W 是電源供應器額定功率，不等同於所有組態下的實際輸入功率。最終的斷路器、插座、UPS 與 PDU 規格，必須以電源供應器銘牌的輸入額定值、實際硬體組態、當地電氣規範及合格電氣人員評估為準。</div>`;
+      rearPanelTable.insertAdjacentElement("afterend", powerPlanning);
     }
   }
   if (chapter.id === "2.4") {
@@ -321,7 +350,13 @@ chapters.forEach((chapter) => {
   button.type = "button";
   button.className = `chapter-button level-${chapter.level}`;
   button.dataset.id = chapter.id;
-  button.textContent = `${chapter.number} ${chapter.title}`;
+  const chapterNumber = document.createElement("span");
+  chapterNumber.className = "chapter-number";
+  chapterNumber.textContent = chapter.number;
+  const chapterTitle = document.createElement("span");
+  chapterTitle.className = "chapter-title";
+  chapterTitle.textContent = chapter.title;
+  button.append(chapterNumber, chapterTitle);
   button.addEventListener("click", () => selectChapter(chapter.id));
 
   if (chapter.level === 1) {

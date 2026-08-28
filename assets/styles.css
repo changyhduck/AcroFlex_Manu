@@ -53,7 +53,7 @@ body {
 .search-result { width: 100%; padding: 9px 10px; color: #dce9f6; font: inherit; text-align: left; background: transparent; border: 0; border-radius: 6px; cursor: pointer; }
 .search-result:hover, .search-result:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .search-result strong, .search-result span, .search-result small { display: block; }
-.search-result strong { font-size: .84rem; }
+.search-result strong { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .42em; font-size: .84rem; }
 .search-result span { margin-top: 2px; color: #8fd2f4; font-size: .76rem; }
 .search-result small { display: -webkit-box; margin-top: 3px; overflow: hidden; color: #b9cbe0; font-size: .72rem; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
@@ -66,7 +66,9 @@ body {
 .chapter-toggle[aria-expanded="true"] { transform: rotate(90deg); }
 .chapter-toggle:hover, .chapter-toggle:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .chapter-toggle:disabled { visibility: hidden; cursor: default; }
-.chapter-button { width: 100%; padding: 9px 10px; color: #d2e0ed; font: inherit; font-size: .92rem; text-align: left; background: transparent; border: 0; border-radius: 7px; cursor: pointer; }
+.chapter-button { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .42em; width: 100%; padding: 9px 10px; color: #d2e0ed; font: inherit; font-size: .92rem; text-align: left; background: transparent; border: 0; border-radius: 7px; cursor: pointer; }
+.chapter-number { white-space: nowrap; }
+.chapter-title { min-width: 0; }
 .chapter-button:hover, .chapter-button:focus-visible { color: #fff; background: #254b6b; outline: none; }
 .chapter-button.is-active { color: #fff; font-weight: 700; background: var(--blue); }
 .chapter-button.level-2 { padding-left: 44px; color: #b8ccde; font-size: .85rem; }
@@ -76,6 +78,7 @@ body {
 .content { width: min(1020px, 100%); padding: 56px clamp(28px, 6vw, 88px) 80px; }
 .eyebrow { margin: 0 0 9px; color: var(--blue); font-weight: 700; font-size: .86rem; letter-spacing: .06em; }
 h1 { margin: 0; color: #102a43; font-size: clamp(1.8rem, 4vw, 2.65rem); line-height: 1.25; }
+.chapter-heading { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .28em; }
 h2 { margin: 38px 0 12px; color: #173f62; font-size: 1.38rem; }
 p { margin: 0 0 16px; }
 .lead { max-width: 720px; margin: 18px 0 30px; color: #425466; font-size: 1.08rem; }
