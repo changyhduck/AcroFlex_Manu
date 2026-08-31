@@ -1,4 +1,5 @@
 ---
+
 number: "1.2"
 title: "AHC-F2000 超融合主機"
 status: outline

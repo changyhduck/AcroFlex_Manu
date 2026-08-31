@@ -151,6 +151,8 @@ p { margin: 0 0 16px; }
 .shutdown-screen img, .shutdown-confirm-screen img { height: auto; max-height: none; padding: 0; }
 .reboot-screen, .reboot-confirm-screen { max-width: 1120px; margin: 18px 0 30px; }
 .reboot-screen img, .reboot-confirm-screen img { height: auto; max-height: none; padding: 0; }
+.figure-card:has(img[src*="infra_main_page_chinese.png"]) { max-width: 1120px; margin: 18px 0 30px; }
+.figure-card:has(img[src*="infra_main_page_chinese.png"]) img { height: auto; max-height: none; padding: 0; }
 .empty-state { padding: 25px; margin-top: 26px; color: #566b7e; background: #fff; border: 1px dashed #b9c9d8; border-radius: 10px; }
 .content-placeholder { color: var(--muted); }
 
