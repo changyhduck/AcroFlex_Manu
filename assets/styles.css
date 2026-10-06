@@ -107,6 +107,10 @@ p { margin: 0 0 16px; }
 .login-screen img { height: auto; max-height: none; padding: 0; }
 .system-info-screen { max-width: 1120px; margin: 18px 0 30px; }
 .system-info-screen img { height: auto; max-height: none; padding: 0; }
+.operations-screen { max-width: 1120px; margin: 18px 0 30px; }
+.operations-screen img { height: auto; max-height: none; padding: 0; }
+.operations-views { max-width: 346px; }
+.operations-config { max-width: 456px; }
 .network-settings-screen { max-width: 1120px; margin: 18px 0 30px; }
 .network-settings-screen img { height: auto; max-height: none; padding: 0; }
 .storage-screen { max-width: 1120px; margin: 18px 0 30px; }

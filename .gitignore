@@ -15,6 +15,7 @@ build/
 .vitepress/dist/
 .docusaurus/
 coverage/
+.venv/
 
 # Environment files
 .env
